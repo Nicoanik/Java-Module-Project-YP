@@ -1,20 +1,39 @@
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        HashSet<Car> carList = new HashSet<>();
+        ArrayList<String> carList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         for (int i = 1; i <= 3; i++) {
-            System.out.println("Введите название автомобиля №" + i + ":");
-            String name = scanner.next();
-            System.out.println("Введите скорость автомобиля " + name + " (от 0 до 250):");
-            int speed = scanner.nextInt();
+            String name;
+            int speed;
+            while (true) {
+                System.out.println("Введите название автомобиля №" + i + ":");
+                name = scanner.next();
+                if (name.isEmpty()) {
+                    System.out.println("Вы не ввели название, попробуйте ещё раз.");
+                } else if (carList.contains(name)) {
+                    System.out.println("Автомобиль с таким именем уже учавствует в гонке, введите другое название.");
+                } else {
+                    break;
+                }
+            }
+            while (true) {
+                System.out.println("Введите скорость автомобиля " + name + " (от 0 до 250):");
+                if (scanner.hasNextInt()) {
+                    speed = scanner.nextInt();
+                    if (speed > 0 && speed <= 250) {
+                        break;
+                    }
+                }
+                System.out.println("Вы ввели не верное значение скорости, попробуйте ещё раз.");
+            }
             Car car = new Car(name, speed);
-            carList.add(car);
+            carList.add(name);
             Race.newRaceLeader(name, speed);
         }
-        System.out.println(carList);
-        System.out.println("Самый быстрый автомобиль: " + raceLeader);
+        System.out.println("В гонке учавствовали автомобили: " + carList);
+        System.out.println("Самый быстрый автомобиль: " + Race.raceLeader);
     }
 }
