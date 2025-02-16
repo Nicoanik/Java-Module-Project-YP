@@ -4,13 +4,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ArrayList<String> carList = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
         for (int i = 1; i <= 3; i++) {
             String name;
             int speed;
             while (true) {
                 System.out.println("Введите название автомобиля №" + i + ":");
-                name = scanner.next();
+                Scanner scanner = new Scanner(System.in);
+                name = scanner.nextLine();
                 if (name.isEmpty()) {
                     System.out.println("Вы не ввели название, попробуйте ещё раз.");
                 } else if (carList.contains(name)) {
@@ -21,6 +21,7 @@ public class Main {
             }
             while (true) {
                 System.out.println("Введите скорость автомобиля " + name + " (от 0 до 250):");
+                Scanner scanner = new Scanner(System.in);
                 if (scanner.hasNextInt()) {
                     speed = scanner.nextInt();
                     if (speed > 0 && speed <= 250) {
