@@ -14,5 +14,7 @@ public class Main {
             carList.add(car);
             Race.newRaceLeader(name, speed);
         }
+        System.out.println(carList);
+        System.out.println("Самый быстрый автомобиль: " + raceLeader);
     }
 }
