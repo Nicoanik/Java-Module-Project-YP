@@ -20,7 +20,7 @@ public class Main {
                 }
             }
             while (true) {
-                System.out.println("Введите скорость автомобиля " + name + " (от 0 до 250):");
+                System.out.println("Введите скорость автомобиля \"" + name + "\" (от 1 до 250):");
                 Scanner scanner = new Scanner(System.in);
                 if (scanner.hasNextInt()) {
                     speed = scanner.nextInt();
@@ -34,7 +34,6 @@ public class Main {
             carList.add(name);
             Race.newRaceLeader(name, speed);
         }
-        System.out.println("В гонке учавствовали автомобили: " + carList);
         System.out.println("Самый быстрый автомобиль: " + Race.raceLeader);
     }
 }
